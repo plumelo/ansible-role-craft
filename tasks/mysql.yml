@@ -3,7 +3,7 @@
   vars:
     mysql_databases:
       - name: '{{ craft_db_name }}'
-        path: '{{ craft_db_path|default(omit) }}'
+        path: '{{ craft_db_path|default(no) }}'
     mysql_users:
       - name: "{{ craft_db_user }}"
         privs:
