@@ -36,17 +36,16 @@
   when: not (craft_app_status.stat.isdir|default(False))
 
 - name: Craft install cleanup
-  shell: 'git clean -f {{ item }}'
+  shell: 'git checkout -- {{ item }}'
   become_user: '{{ craft_user }}'
   args:
     chdir: '{{ craft_path }}'
   with_items:
-    - craft/config/db.php
-    - craft/config/general.php
-    - craft/config/redactor/Simple.json
-    - craft/config/redactor/Standard.json
-    - craft/templates/_layout.html
-    - craft/templates/index.html
-    - public/.htaccess
-    - public/index.php
+    - craft/config/
+    - craft/templates/
+    - craft/plugins/
+    - craft/storage/*.*
+    - craft/storage/.*
+    - public/*.*
+    - public/.*
   when: craft_install_status.changed
