@@ -33,7 +33,7 @@
     chdir: '{{ craft_path }}'
   failed_when: no
   register: craft_install_status
-  when: not craft_app_status.stat.isdir|default(no)
+  when: not (craft_app_status.stat.isdir|default(no))
 
 - name: Craft install cleanup
   shell: 'git clean -f {{ item }}'
