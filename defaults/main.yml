@@ -9,10 +9,9 @@ craft_extra_pkgs: []
 
 craft_user: craft
 
-craft_path:
-
-craft_repo:
-craft_repo_ref:
+#craft_path:
+#craft_repo:
+#craft_repo_ref:
 
 craft_tools:
   - url: https://github.com/rsanchez/craft-cli/releases/download/0.14.0/craft.phar
