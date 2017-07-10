@@ -3,6 +3,8 @@ craft_pkgs:
   - build-essential
   - zip
   - unzip
+  - acl
+
 craft_extra_pkgs: []
 
 craft_user: craft
