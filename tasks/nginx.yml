@@ -4,4 +4,4 @@
     nginx_sites:
       craft:
          template: 'craft.conf.j2'
-         server_name: zweidenker.com zweidenker.de 2denker.plumelo.com 2denker.local
+         server_name: '{{ craft_server_name }}'
