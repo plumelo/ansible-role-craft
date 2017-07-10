@@ -16,7 +16,7 @@
 
     php_fpm_pools:
       - name: '{{ craft_fpm_pool_name }}'
-        listen: /var/run/fpm.craft.socket
+        listen: '/var/run/fpm.{{ craft_fpm_pool_name }}.socket'
         user: '{{ craft_user }}'
         group: '{{ craft_user }}'
         listen.owner: www-data
