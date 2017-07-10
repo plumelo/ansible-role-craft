@@ -27,3 +27,4 @@ craft_db_name: craft
 craft_db_user: craft
 
 craft_fpm_pool_name: craft
+craft_server_name: 'craft.local'
