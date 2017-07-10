@@ -13,7 +13,7 @@
     update: "{{ craft_repo_update | default('False') }}"
     dest:  "{{ craft_path }}"
   register: craft_repo_status
-  when: craft_path|default(no) and craft_repo|default(no)
+  when: craft_path|default(False) and craft_repo|default(False)
 
 - name: Create craft directory
   file: state=directory path='{{ craft_path }}' owner='{{ craft_user }}' group='{{ craft_user }}' recurse="yes"
