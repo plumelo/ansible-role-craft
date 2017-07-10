@@ -13,4 +13,4 @@
 
 - name: Create craft directory
   file: state=directory path='{{ craft_path }}' owner='{{ craft_user }}' group='{{ craft_user }}' mode='775'
-  when: craft_path is defined
+  when: craft_path|bool
