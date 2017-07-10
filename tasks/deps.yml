@@ -1,10 +1,7 @@
 ---
-- name: Update apt
-  apt:
-    update_cache: yes
-    
+
 - name: Install dependencies
-  apt: name='{{ item }}'
+  apt: name='{{ item }}' update_cache=yes
   with_items: '{{ craft_pkgs + craft_extra_pkgs }}'
 
 - name: Install tools
