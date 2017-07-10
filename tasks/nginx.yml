@@ -1,0 +1,7 @@
+---
+- include_role: name=jdauphant.nginx private=true
+  vars:
+    nginx_sites:
+      craft:
+         template: 'craft.conf.j2'
+         server_name: zweidenker.com zweidenker.de 2denker.plumelo.com 2denker.local

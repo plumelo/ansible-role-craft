@@ -1,0 +1,12 @@
+---
+- include_role: name=megheaiulian.mysql private=true
+  vars:
+    mysql_databases:
+      - name: '{{ craft_db_name }}'
+        path: '{{ craft_db_path|default(omit) }}'
+    mysql_users:
+      - name: "{{ craft_db_user }}"
+        privs:
+          - "{{ craft_db_name }}.*:ALL"
+        hosts:
+          - localhost

@@ -1,0 +1,49 @@
+---
+
+- name: Set acl to allow ssh user to clone repo
+  acl: path='{{ craft_path }}' entity='{{ ansible_user }}' etype=user permissions=rwx state=present
+
+- name: Clone the git repo
+  become: no
+  git:
+    accept_hostkey: yes
+    repo: "{{ craft_repo }}"
+    version: "{{ craft_repo_ref | default(omit) }}"
+    update: "{{ craft_repo_update | default('no') }}"
+    dest:  "{{ craft_path }}"
+  register: craft_repo_status
+  when: craft_path is defined
+
+- name: Create craft directory
+  file: state=directory path='{{ craft_path }}' owner='{{ craft_user }}' group='{{ craft_user }}' recurse="yes"
+  when: craft_path is defined
+
+- name: Check if craft is installed
+  stat: path='{{ craft_path }}/craft/app'
+  become_user: '{{ craft_user }}'
+  register: craft_status
+  changed_when: no
+
+- name: Craft install
+  shell: craft install -n -t -o
+  become_user: '{{ craft_user }}'
+  args:
+    chdir: '{{ craft_path }}'
+  failed_when: no
+  when: craft_status.stat.isdir is not defined
+
+- name: Craft install cleanup
+  shell: 'git checkout -- {{ item }}'
+  become_user: '{{ craft_user }}'
+  args:
+    chdir: '{{ craft_path }}'
+  with_items:
+    - craft/config/db.php
+    - craft/config/general.php
+    - craft/config/redactor/Simple.json
+    - craft/config/redactor/Standard.json
+    - craft/templates/_layout.html
+    - craft/templates/index.html
+    - public/.htaccess
+    - public/index.php
+  when: craft_status.stat.isdir is not defined

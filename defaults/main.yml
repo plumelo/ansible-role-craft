@@ -1,0 +1,29 @@
+craft_pkgs:
+  - git
+  - build-essential
+  - zip
+  - unzip
+craft_extra_pkgs: []
+
+craft_user: craft
+
+craft_path:
+
+craft_repo:
+craft_repo_ref:
+
+craft_tools:
+  - url: https://github.com/rsanchez/craft-cli/releases/download/0.14.0/craft.phar
+    dest: /usr/local/bin/craft
+  - url: https://getcomposer.org/composer.phar
+    dest: /usr/local/bin/composer
+craft_extra_tools: []
+
+craft_fpm_install: true
+craft_mysql_install: true
+craft_nginx_install: true
+
+craft_db_name: craft
+craft_db_user: craft
+
+craft_fpm_pool_name: craft

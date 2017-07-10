@@ -1,0 +1,14 @@
+---
+
+- include: deps.yml
+
+- include: fpm.yml
+  when: craft_fpm_install
+
+- include: install.yml
+
+- include: mysql.yml
+  when: craft_mysql_install
+
+- include: nginx.yml
+  when: craft_nginx_install

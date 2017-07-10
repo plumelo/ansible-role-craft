@@ -1,0 +1,43 @@
+#{{ ansible_managed}}
+
+server {
+  listen *:80;
+  fastcgi_buffers  16 16k;
+  fastcgi_buffer_size  32k;
+  server_name {{ item.value.server_name }};
+
+  root "{{ craft_path }}/public";
+  index index.html index.htm index.php;
+
+  gzip on;
+  gzip_types text/plain text/css application/x-javascript text/xml application/xml application/xml+rss text/javascript image/x-icon image/bmp;
+
+  location / {
+    try_files $uri $uri/ @rewrites;
+  }
+
+  location ^~ /admin {
+    try_files $uri $uri/ /index.php?$query_string;
+  }
+
+  location ^~ /cpresources {
+    try_files $uri $uri/ /index.php?$query_string;
+  }
+
+  location @rewrites {
+    rewrite ^(/en|de)?/(.*)$ $1/index.php?p=$2&$args? last;
+  }
+
+  location ~ \.php$ {
+    include snippets/fastcgi-php.conf;
+    fastcgi_pass localhost:9001;
+  }
+
+  location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+    expires max;
+    log_not_found off;
+  }
+  location ~ /\.ht {
+    deny all;
+  }
+}
