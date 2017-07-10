@@ -33,7 +33,7 @@
   when: craft_status.stat.isdir is not defined
 
 - name: Craft install cleanup
-  shell: 'git checkout -- {{ item }}'
+  shell: 'git clean -f {{ item }}'
   become_user: '{{ craft_user }}'
   args:
     chdir: '{{ craft_path }}'
