@@ -16,7 +16,9 @@
 
     php_fpm_pools:
       - name: '{{ craft_fpm_pool_name }}'
+        listen: /var/run/fpm.craft.socket
         user: craft
         group: craft
-        listen: 9001
+        listen.owner: www-data
+        listen.group: www-data
         chdir: /

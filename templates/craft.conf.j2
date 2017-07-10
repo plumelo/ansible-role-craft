@@ -17,7 +17,7 @@ server {
   }
 
   location ^~ /admin {
-    try_files $uri $uri/ /index.php?$query_string;
+    try_files $uri $uri/ @rewrites;
   }
 
   location ^~ /cpresources {
@@ -30,7 +30,7 @@ server {
 
   location ~ \.php$ {
     include snippets/fastcgi-php.conf;
-    fastcgi_pass localhost:9001;
+    fastcgi_pass unix:/var/run/fpm.craft.socket;
   }
 
   location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
