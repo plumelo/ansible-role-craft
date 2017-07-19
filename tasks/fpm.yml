@@ -8,6 +8,7 @@
       - php-mcrypt
       - php-mbstring
       - php-memcached
+      - memcached
       - php-curl
       - php-gd
       - php-zip
