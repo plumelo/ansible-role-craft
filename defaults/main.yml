@@ -4,6 +4,7 @@ craft_pkgs:
   - zip
   - unzip
   - acl
+  - memcached
 
 craft_extra_pkgs: []
 
