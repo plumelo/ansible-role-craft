@@ -5,7 +5,7 @@
   with_items: '{{ craft_pkgs + craft_extra_pkgs }}'
 
 - name: Install tools
-  get_url: url='{{ item.url }}' dest='{{ item.dest }}' mode='{{ item.mode | default('a+x') }}'
+  get_url: url='{{ item.url }}' dest='{{ item.dest }}' mode='{{ item.mode| default('a+x') }}'
   with_items: '{{ craft_tools + craft_extra_tools }}'
 
 - name: Ensure craft user exists
@@ -13,4 +13,4 @@
 
 - name: Create craft directory
   file: state=directory path='{{ craft_path }}' owner='{{ craft_user }}' group='{{ craft_user }}' mode='775'
-  when: craft_path|bool
+  when: craft_path| default(False)
