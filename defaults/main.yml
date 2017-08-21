@@ -51,6 +51,7 @@ craft_fpm_settings: {}
 craft_mysql_install: true
 craft_db_name: '{{ craft_name }}'
 craft_db_user: '{{ craft_name }}'
+craft_db_pass: '{{ craft_db_user }}'
 craft_db_path:
 
 craft_nginx_install: true
