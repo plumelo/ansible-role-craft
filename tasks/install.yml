@@ -1,7 +1,7 @@
 ---
 
 - name: Set acl to allow ssh user to clone repo
-  acl: path='{{ craft_path }}' entity='{{ ansible_user }}' etype=user permissions=rwx state=present
+  acl: path='{{ craft_path }}' entity='{{ ansible_user }}' default=yes etype=user permissions=rwx state=present
   when: craft_repo|default(False)
 
 - name: Clone the git repo
