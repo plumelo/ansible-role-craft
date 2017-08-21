@@ -19,21 +19,13 @@
   file: state=directory path='{{ craft_path }}' owner='{{ craft_user }}' group='{{ craft_user }}' recurse="yes"
   when: craft_repo_status.changed
 
-- name: Check if craft is installed
-  stat: path='{{ craft_path }}/craft/app'
-  become_user: '{{ craft_user }}'
-  register: craft_app_status
-  when: craft_path|default(False)
-  changed_when: no
-
 - name: Craft install
-  shell: craft install -n -t -o
+  shell: craft download -n -t -o
   become_user: '{{ craft_user }}'
   args:
     chdir: '{{ craft_path }}'
-  failed_when: no
+    creates: '{{ craft_path }}/craft/app/Craft.php'
   register: craft_install_status
-  when: not (craft_app_status.stat.isdir|default(False))
 
 - name: Craft install cleanup
   shell: 'git checkout -- {{ item }}'
