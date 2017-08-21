@@ -15,7 +15,7 @@
   register: craft_repo_status
   when: craft_path|default(False) and craft_repo|default(False)
 
-- name: Create craft directory
+- name: Set Craft directory permissions
   file: state=directory path='{{ craft_path }}' owner='{{ craft_user }}' group='{{ craft_user }}' recurse="yes"
   when: craft_repo_status.changed
 
