@@ -38,3 +38,8 @@
     - craft/plugins/
     - public/index.php
   when: craft_cleanup and craft_install_status.changed
+
+- name: Install composer deps
+  composer: working_dir='{{ item }}'
+  become_user: '{{ craft_user }}'
+  with_items: '{{ craft_composer_paths }}'
