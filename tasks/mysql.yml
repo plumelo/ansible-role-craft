@@ -3,10 +3,11 @@
   vars:
     mysql_databases:
       - name: '{{ craft_db_name }}'
-        path: '{{ craft_db_path|default(no) }}'
+        path: '{{ craft_db_path| default(False) }}'
     mysql_users:
-      - name: "{{ craft_db_user }}"
+      - name: '{{ craft_db_user }}'
+        pass: '{{ craft_db_pass }}'
         privs:
-          - "{{ craft_db_name }}.*:ALL"
+          - '{{ craft_db_name }}.*:ALL'
         hosts:
           - localhost
