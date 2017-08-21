@@ -37,7 +37,7 @@ craft_php_packages:
   - php-readline
 craft_php_extra_packages: []
 
-craft_fpm_settings:
+_craft_fpm_settings:
   name: '{{ craft_name }}'
   listen: '/var/run/fpm.{{ craft_name }}.socket'
   user: '{{ craft_user }}'
@@ -45,7 +45,7 @@ craft_fpm_settings:
   listen.owner: www-data
   listen.group: www-data
   chdir: /
-craft_fpm_extra_settings: {}
+craft_fpm_settings: {}
 
 # MySQL
 craft_mysql_install: true

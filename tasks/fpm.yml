@@ -4,4 +4,4 @@
     php_fpm_version: 7.1
     php_fpm_apt_packages: '{{ craft_php_packages + craft_php_extra_packages }}'
     php_fpm_pools:
-      - '{{ craft_fpm_settings| combine(craft_fpm_extra_settings) }}'
+      - '{{ _craft_fpm_settings| combine(craft_fpm_settings) }}'
