@@ -1,7 +1,4 @@
 ---
 - include_role: name=jdauphant.nginx private=true
   vars:
-    nginx_sites:
-      craft:
-         template: 'craft.conf.j2'
-         server_name: '{{ craft_server_name }}'
+    nginx_sites: '{{ craft_nginx_sites }}'
