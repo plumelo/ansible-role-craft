@@ -20,6 +20,8 @@ craft_tools:
     dest: /usr/local/bin/craft
   - url: https://getcomposer.org/composer.phar
     dest: /usr/local/bin/composer
+
+craft_composer_paths: []
 craft_extra_tools: []
 craft_cleanup: true
 
