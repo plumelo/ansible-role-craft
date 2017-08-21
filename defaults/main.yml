@@ -21,6 +21,7 @@ craft_tools:
   - url: https://getcomposer.org/composer.phar
     dest: /usr/local/bin/composer
 craft_extra_tools: []
+craft_cleanup: true
 
 # FPM
 craft_fpm_install: true
