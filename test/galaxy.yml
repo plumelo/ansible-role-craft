@@ -1,0 +1,4 @@
+---
+- role: nbz4live.php-fpm
+- role: megheaiulian.mysql
+- role: jdauphant.nginx
