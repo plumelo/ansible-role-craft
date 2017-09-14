@@ -41,7 +41,8 @@
     - craft/templates/
     - craft/plugins/
     - public/index.php
-  when: craft_cleanup and craft_install_status.changed
+  when: craft_cleanup and craft_install_status.changed and craft_repo_status.changed
+  failed_when: no
 
 - name: Install composer deps
   composer: working_dir='{{ item }}'
