@@ -1,4 +1,4 @@
-craft_name: srv
+craft_name: project_name
 craft_path: /srv
 craft_user: srv
 craft_repo: git@github.com:plumelo/ansible-role-craft.git
