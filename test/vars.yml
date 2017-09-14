@@ -1,0 +1,5 @@
+craft_name: vagrant
+craft_path: /vagrant
+craft_user: vagrant
+craft_repo: git@github.com:plumelo/ansible-role-craft.git
+craft_repo_ref: 'master'
