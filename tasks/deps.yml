@@ -14,3 +14,6 @@
 - name: Create craft directory
   file: state=directory path='{{ craft_path }}' owner='{{ craft_user }}' group='{{ craft_user }}' mode='775'
   when: craft_path| default(False)
+  register: craft_path_register
+  failed_when: craft_path_register.failed|default(False) and craft_path_register.group != 'dialout'
+
