@@ -28,7 +28,7 @@ craft_cleanup: true
 # FPM
 craft_fpm_install: true
 craft_php_packages:
-  - php7.2-fpm
+  - php7.1-fpm
   - php-mysql
   - php-mcrypt
   - php-mbstring
