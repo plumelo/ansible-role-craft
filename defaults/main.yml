@@ -37,6 +37,7 @@ craft_php_packages:
   - php-gd
   - php-zip
   - php-readline
+  - php-xml
 craft_php_extra_packages: []
 
 _craft_fpm_settings:
