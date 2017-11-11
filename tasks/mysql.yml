@@ -1,5 +1,5 @@
 ---
-- include_role: name=megheaiulian.mysql private=true
+- include_role: name=plumelo.mysql private=true
   vars:
     mysql_databases:
       - name: '{{ craft_db_name }}'
