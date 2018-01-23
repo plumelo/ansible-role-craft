@@ -29,15 +29,15 @@ craft_cleanup: true
 craft_fpm_install: true
 craft_php_packages:
   - php7.1-fpm
-  - php-mysql
-  - php-mcrypt
-  - php-mbstring
-  - php-memcached
-  - php-curl
-  - php-gd
-  - php-zip
-  - php-readline
-  - php-xml
+  - php7.1-mysql
+  - php7.1-mcrypt
+  - php7.1-mbstring
+  - php7.1-memcached
+  - php7.1-curl
+  - php7.1-gd
+  - php7.1-zip
+  - php7.1-readline
+  - php7.1-xml
 craft_php_extra_packages: []
 
 _craft_fpm_settings:
