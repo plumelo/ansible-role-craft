@@ -1,7 +1,7 @@
 ---
 - include_role: name=nbz4live.php-fpm private=true
   vars:
-    php_fpm_version: 7.1
+    php_fpm_version: "{{ craft_fpm_php_version }}"
     php_fpm_apt_packages: '{{ craft_php_packages + craft_php_extra_packages }}'
     php_fpm_pools:
       - '{{ _craft_fpm_settings| combine(craft_fpm_settings) }}'

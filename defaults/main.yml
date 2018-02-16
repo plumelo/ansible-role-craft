@@ -1,3 +1,4 @@
+---
 craft_pkgs:
   - git
   - build-essential
@@ -26,18 +27,19 @@ craft_extra_tools: []
 craft_cleanup: true
 
 # FPM
+craft_fpm_php_version: 7.2
 craft_fpm_install: true
 craft_php_packages:
-  - php7.1-fpm
-  - php7.1-mysql
-  - php7.1-mcrypt
-  - php7.1-mbstring
-  - php7.1-memcached
-  - php7.1-curl
-  - php7.1-gd
-  - php7.1-zip
-  - php7.1-readline
-  - php7.1-xml
+  - "php{{ craft_fpm_php_version }}-fpm"
+  - "php{{ craft_fpm_php_version }}-mysql"
+  - "php{{ craft_fpm_php_version }}-mcrypt"
+  - "php{{ craft_fpm_php_version }}-mbstring"
+  - "php{{ craft_fpm_php_version }}-memcached"
+  - "php{{ craft_fpm_php_version }}-curl"
+  - "php{{ craft_fpm_php_version }}-gd"
+  - "php{{ craft_fpm_php_version }}-zip"
+  - "php{{ craft_fpm_php_version }}-readline"
+  - "php{{ craft_fpm_php_version }}-xml"
 craft_php_extra_packages: []
 
 _craft_fpm_settings:
