@@ -27,7 +27,7 @@ craft_extra_tools: []
 craft_cleanup: true
 
 # FPM
-craft_fpm_php_version: 7.2
+craft_fpm_php_version: 7.1
 craft_fpm_install: true
 craft_php_packages:
   - "php{{ craft_fpm_php_version }}-fpm"
