@@ -3,7 +3,7 @@
 
 Vagrant.configure('2') do |config|
   config.vm.hostname = 'craft'
-  config.vm.box = 'kapke/xenial64-lxc'
+  config.vm.box = 'plumelo/xenial64'
 
   config.ssh.forward_agent = true
 
