@@ -1,4 +1,5 @@
 ---
+
 craft_pkgs:
   - git
   - build-essential
@@ -17,14 +18,15 @@ craft_repo:
 craft_repo_ref:
 
 craft_tools:
+  # yamllint disable-line rule:line-length
   - url: https://github.com/rsanchez/craft-cli/releases/download/0.16.0/craft.phar
     dest: /usr/local/bin/craft
   - url: https://getcomposer.org/composer.phar
     dest: /usr/local/bin/composer
 
 craft_version: '2.6.3011'
+# yamllint disable-line rule:line-length
 craft_download_url: https://download.craftcdn.com/craft/{{ craft_version.split('.')[0:2]| join('.') }}/{{ craft_version }}/Craft-{{ craft_version }}.tar.gz
-
 craft_composer_paths: []
 craft_extra_tools: []
 craft_cleanup: true
@@ -33,16 +35,16 @@ craft_cleanup: true
 craft_fpm_php_version: 7.1
 craft_fpm_install: true
 craft_php_packages:
-  - "php{{ craft_fpm_php_version }}-fpm"
-  - "php{{ craft_fpm_php_version }}-mysql"
-  - "php{{ craft_fpm_php_version }}-mcrypt"
-  - "php{{ craft_fpm_php_version }}-mbstring"
-  - "php{{ craft_fpm_php_version }}-memcached"
-  - "php{{ craft_fpm_php_version }}-curl"
-  - "php{{ craft_fpm_php_version }}-gd"
-  - "php{{ craft_fpm_php_version }}-zip"
-  - "php{{ craft_fpm_php_version }}-readline"
-  - "php{{ craft_fpm_php_version }}-xml"
+  - 'php{{ craft_fpm_php_version }}-fpm'
+  - 'php{{ craft_fpm_php_version }}-mysql'
+  - 'php{{ craft_fpm_php_version }}-mcrypt'
+  - 'php{{ craft_fpm_php_version }}-mbstring'
+  - 'php{{ craft_fpm_php_version }}-memcached'
+  - 'php{{ craft_fpm_php_version }}-curl'
+  - 'php{{ craft_fpm_php_version }}-gd'
+  - 'php{{ craft_fpm_php_version }}-zip'
+  - 'php{{ craft_fpm_php_version }}-readline'
+  - 'php{{ craft_fpm_php_version }}-xml'
 craft_php_extra_packages: []
 
 _craft_fpm_settings:
