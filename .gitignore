@@ -2,3 +2,4 @@
 *.retry
 test/roles/*
 !test/roles/plumelo.craft
+test/credentials

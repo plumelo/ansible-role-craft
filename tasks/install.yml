@@ -1,48 +1,57 @@
 ---
 
 - name: Set acl to allow ssh user to clone repo
-  acl: path='{{ craft_path }}' entity='{{ ansible_user }}' etype=user permissions=rwx state=present
+  acl:
+    path: '{{ craft_path }}'
+    entity: '{{ ansible_user }}'
+    etype: user
+    permissions: rwx
+    state: present
   when: craft_repo| default(False)
 
 - name: Set default acl to allow ssh user to clone repo
-  acl: path='{{ craft_path }}' entity='{{ ansible_user }}' default=yes etype=user permissions=rwx state=present
+  acl:
+    path: '{{ craft_path }}'
+    entity: '{{ ansible_user }}'
+    default: true
+    etype: user
+    permissions: rwx
+    state: present
   when: craft_repo| default(False)
 
 - name: Clone the git repo
-  become: no
+  become: 'no'
   git:
-    accept_hostkey: yes
+    accept_hostkey: true
     repo: '{{ craft_repo }}'
     version: '{{ craft_repo_ref | default(omit) }}'
     update: '{{ craft_repo_update | default(False) }}'
-    dest:  '{{ craft_path }}'
+    dest: '{{ craft_path }}'
   register: craft_repo_status
   when: craft_path| default(False) and craft_repo| default(False)
 
 - name: Set Craft directory permissions
-  file: state=directory path='{{ craft_path }}' owner='{{ craft_user }}' group='{{ craft_user }}' recurse=yes
+  file:
+    state: directory
+    path: '{{ craft_path }}'
+    owner: '{{ craft_user }}'
+    group: '{{ craft_user }}'
+    recurse: true
   when: craft_repo_status.changed
 
-- name: Craft install
-  shell: craft download -n -t -o
+- name: Download craft-cms
   become_user: '{{ craft_user }}'
-  args:
-    chdir: '{{ craft_path }}'
-    creates: '{{ craft_path }}/craft/app/Craft.php'
-  register: craft_install_status
-
-- name: Craft install cleanup
-  shell: 'git checkout -- {{ item }}'
-  become_user: '{{ craft_user }}'
-  args:
-    chdir: '{{ craft_path }}'
-  with_items:
-    - craft/config/
-    - craft/templates/
-    - craft/plugins/
-    - public/index.php
-  when: craft_cleanup and craft_install_status.changed and craft_repo_status.changed
-  failed_when: no
+  unarchive:
+    src: '{{ craft_download_url }}'
+    dest: '{{ craft_path }}'
+    remote_src: true
+    exclude:
+      - public
+      - craft/config
+      - craft/templates
+      - craft/storage
+      - craft/plugins
+      - readme.txt
 
 - name: Install composer deps
   composer: working_dir='{{ item }}'
