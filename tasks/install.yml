@@ -59,7 +59,7 @@
       - craft/plugins
       - readme.txt
       # yamllint disable-line rule:line-length
-  when: craft_info_contents.rc != 0 or craft_version not in craft_info_contents.stdout_lines[3] | default([])
+  when: craft_info_contents.rc != 0 or craft_version not in (craft_info_contents.stdout_lines[3])
 
 - name: Install composer deps
   composer:
