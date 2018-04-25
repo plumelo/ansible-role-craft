@@ -45,9 +45,6 @@
   failed_when: false
   register: craft_info_contents
 
-- debug:
-    var: craft_info_contents
-
 - name: Download craft-cms
   become_user: '{{ craft_user }}'
   unarchive:
