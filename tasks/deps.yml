@@ -1,7 +1,9 @@
 ---
 
 - name: Install dependencies
-  apt: name='{{ item }}' update_cache=yes
+  apt:
+    name: '{{ item }}'
+    update_cache: true
   with_items: '{{ craft_pkgs + craft_extra_pkgs }}'
 
 - name: Install tools
@@ -12,7 +14,8 @@
   with_items: '{{ craft_tools + craft_extra_tools }}'
 
 - name: Ensure craft user exists
-  user: name='{{ craft_user }}'
+  user:
+    name: '{{ craft_user }}'
 
 - name: Create craft directory
   file:

@@ -39,6 +39,12 @@
     recurse: true
   when: craft_repo_status.changed
 
+- name: Register Craft CMS version
+  shell: 'cat {{ craft_path }}/craft/app/Info.php'
+  changed_when: false
+  failed_when: false
+  register: craft_info_contents
+
 - name: Download craft-cms
   become_user: '{{ craft_user }}'
   unarchive:
@@ -52,8 +58,11 @@
       - craft/storage
       - craft/plugins
       - readme.txt
+      # yamllint disable-line rule:line-length
+  when: craft_info_contents.rc != 0 or craft_version not in craft_info_contents.stdout_lines[3]
 
 - name: Install composer deps
-  composer: working_dir='{{ item }}'
+  composer:
+    working_dir: '{{ item }}'
   become_user: '{{ craft_user }}'
   with_items: '{{ craft_composer_paths }}'
