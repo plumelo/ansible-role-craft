@@ -1,6 +1,8 @@
 ---
 
-- include_role: name=nbz4live.php-fpm private=true
+- include_role:
+    name: nbz4live.php-fpm
+    private: true
   vars:
     php_fpm_version: "{{ craft_fpm_php_version }}"
     php_fpm_apt_packages: '{{ craft_php_packages + craft_php_extra_packages }}'
