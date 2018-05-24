@@ -1,5 +1,7 @@
 ---
 
-- include_role: name=jdauphant.nginx private=true
+- include_role:
+    name: jdauphant.nginx
+    private: true
   vars:
     nginx_sites: '{{ craft_nginx_sites }}'

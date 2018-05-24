@@ -1,5 +1,5 @@
 .vagrant
 *.retry
-test/roles/*
-!test/roles/plumelo.craft
-test/credentials
+tests/roles/*
+!tests/roles/plumelo.craft
+tests/credentials

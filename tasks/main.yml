@@ -1,14 +1,14 @@
 ---
 
-- include: deps.yml
+- import_tasks: deps.yml
 
-- include: fpm.yml
+- import_tasks: fpm.yml
   when: craft_fpm_install
 
-- include: install.yml
+- import_tasks: install.yml
 
-- include: mysql.yml
+- import_tasks: mysql.yml
   when: craft_mysql_install
 
-- include: nginx.yml
+- import_tasks: nginx.yml
   when: craft_nginx_install
